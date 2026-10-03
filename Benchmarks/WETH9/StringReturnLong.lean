@@ -580,11 +580,6 @@ theorem weth9LongFinalMem_read128 (σ : AccountMap) (I : ExecutionEnv) :
       (Or.inl ⟨by rw [hptr]; omega, by rw [hsize]; omega⟩)]
   exact weth9LongMem_read128_of_bound _ (by omega)
 
-/-! ## Steps 4-5 — symbolic-offset ABI encoder (pc 187 → RETURN)
-
-The encoder is the same bytecode as the short path but with a **symbolic** free pointer
-`newFp = 0xa0 + 32·wc`.  The generic memory-cost witnesses below (giving the cost as a symbolic
-`Cₘ` expression rather than a concrete `decide`) are what make the symbolic-offset `MLOAD`/`MSTORE`/
-`RETURN` steps drivable — the analog of the mem-cost specs used for the copy loop. -/
+/-! The ABI return encoder (pc 187 → `RETURN`) is `Benchmarks/WETH9/StringReturnLong2.lean`. -/
 
 end Benchmarks.WETH9

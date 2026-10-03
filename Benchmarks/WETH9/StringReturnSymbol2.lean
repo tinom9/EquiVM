@@ -11,8 +11,8 @@ This module finishes the long case: it drives the shared symbolic-offset ABI enc
 `RETURN`), including the second mem→mem copy loop (pc 221–244) and the trailing-word zero-mask
 (pc 245–289), concluding `RDret … (weth9SymLongStringAbi σ I)`.  It mirrors
 `Benchmarks/WETH9/StringReturnLong2.lean` verbatim with storage slot 1, reusing the slot-agnostic
-`wordConcat`/`readWithPadding_wordConcat`, `machineState_M_*`, `wordMul32_not_ge_of_lt`,
-`weth9Long2Land31_toNat` and the symbolic mem-cost witnesses.  The encoder carries no storage-slot
+`wordConcat`/`readWithPadding_wordConcat`, `machineState_M_*`, and
+`weth9Long2Land31_toNat`.  The encoder carries no storage-slot
 marker on its stack (the slot value was popped at the Loop-1 exit), so this is a pure
 re-parameterization by the slot-1 header.
 -/

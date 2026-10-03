@@ -13,7 +13,7 @@ zero-mask (pc 245–289), and concludes `RDret … (weth9LongStringAbi σ I)` �
 `offset(0x20) ‖ len ‖ dataWords(last masked)`.
 
 It mirrors the SHORT encoder `weth9NameShortEncoder` (`StringReturn.lean`) generalized to `wc`
-data words, and reuses the Loop-1 fuel-recursion template + symbolic cost witnesses from
+data words, and reuses the Loop-1 fuel-recursion template from
 `StringReturnLong.lean`.
 -/
 
