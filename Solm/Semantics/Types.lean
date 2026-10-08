@@ -13,7 +13,9 @@ structure ExternalCallABI where
   decode? : Ident -> EVM.Bytes-> Option (List Value)
 
 structure Config where
-  storage : StorageLayout
+  storageBackend : StorageBackend
+  /-- Operations on `ContractDecl.transient`, independent of persistent storage. -/
+  transientBackend : StorageBackend := StorageBackend.empty
   externalABI : ExternalCallABI
   abiDecodeMode : ABI.DecodeMode := ABI.DecodeMode.modern
   /-- Initialisation code (creation bytecode ++ ABI-encoded constructor args) for a
@@ -27,5 +29,9 @@ structure Config where
 structure Frame where
   contract : ContractDecl
   locals : Store
+  /-- Values of the contract's immutables.  The constructor starts from their zero values
+      (`initialImmutables`) and assigns them (`Stmt.setImmutable`); a runtime call starts from the
+      values the constructor left, which the deployed code embeds. -/
+  immutables : Store := ∅
 
 end Solm
